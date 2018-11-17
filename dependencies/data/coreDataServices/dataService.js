@@ -1,5 +1,6 @@
 function dataService(
-    storeApi
+    storeApi,
+    signet
 ) {
 
     function get(key) {
@@ -17,8 +18,8 @@ function dataService(
     }
 
     return {
-        get: get,
-        set: set
+        get: signet.enforce('objectKey => *', get),
+        set: signet.enforce('objectKey, definedValue => undefined', set)
     };
 }
 

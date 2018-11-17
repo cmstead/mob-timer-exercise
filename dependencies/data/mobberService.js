@@ -12,14 +12,14 @@ function mobberService(
         let mobbers = getMobbers();
         mobbers.push(name);
 
-        dataService.setMobbers(mobbers);
+        setMobbers(mobbers);
     }
 
     function removeMobber(index) {
         let mobbers = getMobbers()
         mobbers.splice(index, 1);
 
-        dataService.setMobbers(mobbers);
+        setMobbers(mobbers);
     }
 
 
