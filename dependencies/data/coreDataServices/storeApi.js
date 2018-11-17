@@ -1,6 +1,7 @@
 function storeApi(
     fs,
-    path
+    path,
+    signet
 ) {
 
     const storeLocation = path.join(__dirname, 'dataStore', 'dataStore.json');
@@ -14,8 +15,8 @@ function storeApi(
     }
 
     return {
-        readStore: readStore,
-        writeStore: writeStore
+        readStore: signet.enforce('* => objectInstance', readStore),
+        writeStore: signet.enforce('objectInstance => undefined', writeStore)
     };
 }
 

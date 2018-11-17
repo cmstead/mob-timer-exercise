@@ -1,6 +1,7 @@
 function turnTimeService(
     dataPropertyKeys,
-    dataService
+    dataService,
+    signet
 ) {
     'use strict';
     
@@ -8,8 +9,8 @@ function turnTimeService(
     const setTurnTime = (value) => dataService.set(dataPropertyKeys.turnTime, value);
 
     return {
-        getTurnTime: getTurnTime,
-        setTurnTime: setTurnTime
+        getTurnTime: signet.enforce('* => turnTime', getTurnTime),
+        setTurnTime: signet.enforce('turnTime => undefined', setTurnTime)
     };
 }
 

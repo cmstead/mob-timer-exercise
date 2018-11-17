@@ -1,5 +1,7 @@
 function coreTypes(signet) {
 
+    signet.alias('objectInstance', 'composite<object, not<null>>');
+
     signet.alias('objectKey', 'variant<string, number>');
     signet.alias('definedValue', 'not<undefined>');
 
@@ -7,6 +9,8 @@ function coreTypes(signet) {
 
     signet.alias('mobber', 'string')
     signet.alias('mobbers', 'array<mobber>');
+
+    signet.alias('turnTime', 'boundedInt<1, Infinity>');
 
 }
 
